@@ -10,13 +10,15 @@ def copy():
     Write to your clipboard the content from STDIN
     """
     try:
+        input = ""
         while True:
-            input = sys.stdin.readline()
-            if not input:
+            temp = sys.stdin.readline()
+            if not temp:
                 break # EOF
-            pyperclip.copy (input)
+            input += temp
     except KeyboardInterrupt:
-        pass  # Handle any cleanup here if necessary 
+        pass  # Handle any cleanup here if necessary
+    pyperclip.copy (input)
 
 @app.command()
 def paste():
